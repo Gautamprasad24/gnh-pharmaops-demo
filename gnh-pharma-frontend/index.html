@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GNH Pharma Ops Dashboard - Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+  <header class="top-bar">
+    <div class="logo"><img src="https://www.gnhindia.com/images/logo.svg" alt=""></div>
+    <div class="title">Internal Tools & Dashboard (Demo)</div>
+  </header>
+
+  <main class="container">
+  <section class="cards">
+    <div class="card" id="total-meds-card">
+      <h3>Total Medicines</h3>
+      <p id="total-medicines">0</p>
+    </div>
+    <div class="card" id="total-orders-card">
+      <h3>Pending Orders</h3>
+      <p id="total-orders">0</p>
+    </div>
+    <div class="card" id="high-risk-card">
+      <h3>High Risk Expiry</h3>
+      <p id="high-risk-count">0</p>
+    </div>
+  </section>
+
+  <!-- Charts -->
+  <section class="charts">
+    <div class="chart-box">
+      <h3>Medicine Stock by Category</h3>
+      <canvas id="stockPieChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Order Status Overview</h3>
+      <canvas id="orderStatusChart"></canvas>
+    </div>
+  </section>
+
+  <section class="grid">
+    <!-- ✅ Medicines Table -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Medicine Inventory</h2>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Batch</th>
+            <th>Stock</th>
+            <th>Expiry</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody id="medicines-table-body">
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Add Medicine Form -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Add New Medicine</h2>
+      </div>
+      <form id="medicine-form">
+        <label>
+          Name
+          <input type="text" id="med-name" required />
+        </label>
+        <label>
+          Batch No.
+          <input type="text" id="med-batch" required />
+        </label>
+        <label>
+          Stock
+          <input type="number" id="med-stock" required min="1" />
+        </label>
+        <label>
+          Expiry Date
+          <input type="date" id="med-expiry" required />
+        </label>
+        <label>
+          Category
+          <input type="text" id="med-category" placeholder="Antibiotic / Analgesic" />
+        </label>
+        <button type="submit">Save Medicine</button>
+        <p class="form-status" id="med-form-status"></p>
+      </form>
+    </section>
+
+    <!-- Orders Table -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Orders</h2>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Hospital</th>
+            <th>Medicine</th>
+            <th>Qty</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="orders-table-body">
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Add Order + AI Risk -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Create Order & Check Expiry Risk</h2>
+      </div>
+      <form id="order-form">
+        <label>
+          Hospital / Client
+          <input type="text" id="order-hospital" required />
+        </label>
+        <label>
+          Medicine Name
+          <input type="text" id="order-med-name" required />
+        </label>
+        <label>
+          Quantity
+          <input type="number" id="order-qty" required min="1" />
+        </label>
+        <button type="submit">Create Order</button>
+        <p class="form-status" id="order-form-status"></p>
+      </form>
+
+      <div class="ai-panel">
+        <h3>AI-style Expiry Risk Checker</h3>
+        <label>
+          Expiry Date
+          <input type="date" id="ai-expiry-date" />
+        </label>
+        <button id="ai-check-btn">Check Risk</button>
+        <div class="ai-result" id="ai-result"></div>
+      </div>
+    </section>
+  </section>
+</main>
+
+
+  <footer class="footer">
+    Demo created for GNH India 
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
