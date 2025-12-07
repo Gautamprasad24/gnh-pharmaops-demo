@@ -3,7 +3,7 @@
 
 
 
-const API_BASE = "https://gnh-pharma-backend.onrender.com/";
+const API_BASE = "https://gnh-pharma-backend.onrender.com";
 
 let stockPieChart = null;
 let orderStatusChart = null;
