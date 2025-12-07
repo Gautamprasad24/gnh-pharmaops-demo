@@ -1,10 +1,10 @@
 // Change this if your backend runs on another port/host
-// <<<<<<< HEAD
+
 
 
 
 const API_BASE = "https://gnh-pharma-backend.onrender.com/";
-//  (Point frontend to Render backend and update server routes)
+
 let stockPieChart = null;
 let orderStatusChart = null;
 
