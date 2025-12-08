@@ -47,10 +47,29 @@ body {
   color: #333;
   text-align: center;
 }
+.top-bar {
+  display: flex;
+  align-items: start;
+  position: relative;
+  padding: 10px 16px;
+  background-color: white;
+}
 
+.logo img {
+  height: 150px;
+  width: auto;
+  /* border-radius: 50%; */
+}
 
-.top-bar .logo {
-  font-size: 1.4rem;
+/* Perfect center title */
+.title {
+  position: absolute;
+  top:40%;
+  font-size: large;
+  font-weight: bold;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
   font-weight: 600;
 }
 
