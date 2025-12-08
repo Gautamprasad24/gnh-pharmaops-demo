@@ -10,80 +10,51 @@ body {
   color: #222;
 }
 
+/* ============ TOP BAR ============ */
 .top-bar {
   background: white;
-  color: white;
-  padding: 16px 24px;
+  padding: 12px 16px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.title{
-    color:black;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    font-size: 1.5rem;
-    font-weight: 700;
-
-}
-.charts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 18px;
-  margin-bottom: 28px;
-}
-
-.chart-box {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-}
-
-.chart-box h3 {
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-  color: #333;
-  text-align: center;
-}
-.top-bar {
-  display: flex;
-  align-items: start;
+  align-items: center;
   position: relative;
-  padding: 10px 16px;
-  background-color: white;
+}
+
+/* Logo always on the left */
+.logo {
+  flex-shrink: 0;
 }
 
 .logo img {
-  height: 150px;
+  height: 80px;
   width: auto;
-  /* border-radius: 50%; */
+  max-width: 100%;
 }
 
-/* Perfect center title */
+/* Title perfectly centered for desktop/tablet */
 .title {
   position: absolute;
-  top:40%;
-  font-size: large;
-  font-weight: bold;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: black;
+  text-align: center;
 }
 
+/* Optional subtitle inside top-bar */
 .top-bar .subtitle {
   font-size: 0.9rem;
   opacity: 0.9;
 }
 
+/* ============ LAYOUT WRAPPER ============ */
 .container {
   max-width: 1140px;
   margin: 24px auto;
   padding: 0 16px;
 }
 
+/* ============ CARDS ============ */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -109,18 +80,21 @@ body {
   font-weight: 600;
 }
 
+/* ============ MAIN GRID ============ */
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
   gap: 18px;
 }
 
+/* Stack panels on smaller screens */
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
   }
 }
 
+/* ============ PANELS ============ */
 .panel {
   background: white;
   border-radius: 12px;
@@ -139,6 +113,29 @@ body {
   font-size: 1.1rem;
 }
 
+/* ============ CHARTS ============ */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.chart-box {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.chart-box h3 {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #333;
+  text-align: center;
+}
+
+/* ============ TABLE ============ */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -160,6 +157,13 @@ tbody tr:hover {
   background: #fafafa;
 }
 
+/* Enable horizontal scroll for wide tables on mobile */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ============ FORM ============ */
 form {
   display: flex;
   flex-direction: column;
@@ -212,6 +216,7 @@ button:hover {
   color: #b91c1c;
 }
 
+/* ============ AI PANEL ============ */
 .ai-panel {
   margin-top: 16px;
   padding-top: 10px;
@@ -231,10 +236,69 @@ button:hover {
   background: #f9fafb;
 }
 
+/* ============ FOOTER ============ */
 .footer {
   text-align: center;
   font-size: 0.8rem;
   padding: 16px;
   margin-top: 24px;
   color: #666;
+}
+
+/* ============ RESPONSIVE TWEAKS ============ */
+
+/* Tablet & small laptop */
+@media (max-width: 768px) {
+  .top-bar {
+    padding: 10px 12px;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  button {
+    width: 100%;          /* full-width buttons on tablet/mobile */
+    text-align: center;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .top-bar {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  /* On very small screens, avoid absolute centering issues */
+  .title {
+    position: static;
+    transform: none;
+    margin-left: 8px;
+    text-align: left;
+  }
+
+  .logo img {
+    height: 48px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
 }
